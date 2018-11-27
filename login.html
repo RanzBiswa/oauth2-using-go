@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ranz- all for you</title>    
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+    <style>
+        html {
+    box-sizing: border-box;
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background: #f3f3f3;
+}
+
+/* style the loginContainer */
+
+body{
+    background: darkgray !important
+}
+.loginContainer {
+    /* position: relative;
+border-radius: 5px;
+background-color: #f2f2f2;
+padding: 20px 0 30px 0; */
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    width: 28em;
+    height: 25em;
+    margin-top: -9em;
+    /*set to a negative number 1/2 of your height*/
+    margin-left: -15em;
+    /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    font-family: Century Gothic !important;
+}
+
+.g-signin2 {
+    font-family: Century Gothic !important;
+}
+
+/* style inputs and link buttons */
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    margin: 5px 0;
+    opacity: 0.85;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration: none;
+    /* remove underline from anchors */
+    background-color: #f3f3f3;
+    font-family: Century Gothic !important;
+}
+
+input:hover,
+.loginBtn:hover {
+    opacity: 1;
+}
+
+/* add appropriate colors to fb, twitter and google buttons */
+
+.fb {
+    background-color: #3B5998;
+    color: white;
+}
+
+.twitter {
+    background-color: #55ACEE;
+    color: white;
+}
+
+.google {
+    background-color: #dd4b39;
+    color: white;
+}
+
+/* style the submit button */
+
+.btnLogin {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    margin: 5px 0;
+    opacity: 0.85;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration: none;
+    /* remove underline from anchors */
+    font-family: Century Gothic !important;
+}
+
+.borderNone {
+    border: none;
+}
+
+.borderRequired {
+    border: 1px solid red;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+/* Two-column layout */
+
+.column {
+    float: left;
+    margin: auto;
+    padding: 0 50px;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+
+.loginRow:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* vertical line */
+
+.vl {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    border: 2px solid #ddd;
+    height: 175px;
+}
+
+/* text inside the vertical line */
+
+.vl-innertext {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    padding: 8px 10px;
+}
+
+/* hide some text on medium and large screens */
+
+.hide-md-lg {
+    display: none;
+}
+
+/* bottom container */
+
+.bottom-container {
+    text-align: center;
+    background-color: #666;
+    border-radius: 0px 0px 4px 4px;
+}
+
+.hideLogin {
+    visibility: hidden;
+}
+
+.showLogin {
+    visibility: visible;
+}
+
+/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    /* hide the vertical line */
+    .vl {
+        display: none;
+    }
+
+    /* show the hidden text on small screens */
+    .hide-md-lg {
+        display: block;
+        text-align: center;
+    }
+}
+
+
+.topbarSwagger {
+    /* position: fixed; */
+    /* top: 20px; */
+    height: 29px;
+    width: 100%;
+    background: #808080;
+    color: white;
+    align-items: center;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.lblWelcome {
+    text-align: center;
+}
+
+.spanLogout {
+    float: right;
+    color: white;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+#spanErrorMessage {
+    width: 100%;
+    border: none;
+    opacity: 0.85;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 20px;
+    text-decoration: none;
+    color: red;
+    font-weight: bold;
+}
+
+.mleft {
+    margin-left: 7em;
+}
+
+</style>
+</head>
+
+<body>
+    <div class="loginContainer">
+        <div class="loginRow">
+            <h2 style="text-align:center">Login</h2>
+            <div class="column">
+                <input type="text" name="username" placeholder="User Name" class="loginUserName borderNone" onfocus="alterBorder('loginUserName','borderRequired','borderNone')"
+                    required>
+                <input type="password" name="password" placeholder="Password" class="loginPassword borderNone" onfocus="alterBorder('loginPassword','borderRequired','borderNone')"
+                    required>
+                <button class="btnLogin" onclick="LoadSwaggeronButtonClick()">Login</button>
+                <span id="spanErrorMessage"></span>
+            </div>
+            <div class="btn white darken-4 col s10 m4 mleft">
+                <a href="/login" style="text-transform:none">
+                    <div class="left">
+                        <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                    </div>
+                    Login with Google
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
